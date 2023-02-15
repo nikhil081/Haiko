@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.haiko.R
+import com.example.haiko.model.Crypto
 import com.example.haiko.model.User
 
 
-class CryptoAdapter(val userList: ArrayList<User>) : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
+class CryptoAdapter(var userList: List<Crypto>) : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
 
     class MyViewHolder( item: View) : RecyclerView.ViewHolder(item) {
         var llt: TextView = item.findViewById(R.id.text)
@@ -29,5 +30,10 @@ class CryptoAdapter(val userList: ArrayList<User>) : RecyclerView.Adapter<Crypto
 
     override fun getItemCount(): Int {
         return userList.size
+    }
+
+    fun updateData(cryptoList: List<Crypto>) {
+        userList = cryptoList
+        notifyDataSetChanged()
     }
 }
